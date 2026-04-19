@@ -22,6 +22,7 @@ class CategoryForm
                                     ->relationship('parent', 'name', fn ($query) => $query->whereNull('parent_id'))
                                     ->label('Catégorie Parente')
                                     ->searchable()
+                                    ->preload()
                                     ->placeholder('Racine'),
                                 TextInput::make('name')
                                     ->required()

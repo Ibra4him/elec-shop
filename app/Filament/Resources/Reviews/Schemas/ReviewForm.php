@@ -16,9 +16,13 @@ class ReviewForm
             ->components([
                 Select::make('user_id')
                     ->relationship('user', 'name')
+                    ->preload()
+                    ->searchable()
                     ->required(),
                 Select::make('product_id')
                     ->relationship('product', 'name')
+                    ->preload()
+                    ->searchable()
                     ->required(),
                 TextInput::make('rating')
                     ->required()

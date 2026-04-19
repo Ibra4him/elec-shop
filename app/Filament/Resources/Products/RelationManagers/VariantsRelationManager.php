@@ -26,7 +26,7 @@ class VariantsRelationManager extends RelationManager
     {
         return $schema
             ->components([
-                \Filament\Forms\Components\Section::make('Stock & Prix')
+                \Filament\Schemas\Components\Section::make('Stock & Prix')
                     ->schema([
                         TextInput::make('sku')
                             ->label('SKU')
@@ -56,7 +56,7 @@ class VariantsRelationManager extends RelationManager
                             ->default(true),
                     ])->columns(2),
 
-                \Filament\Forms\Components\Section::make('Attributs de la variante')
+                \Filament\Schemas\Components\Section::make('Attributs de la variante')
                     ->description('Sélectionnez les attributs qui définissent cette variante (ex: Couleur, Tension)')
                     ->schema([
                         \Filament\Forms\Components\Select::make('attributeValues')
@@ -64,9 +64,12 @@ class VariantsRelationManager extends RelationManager
                             ->relationship('attributeValues', 'value')
                             ->multiple()
                             ->preload()
+                            ->searchable()
                             ->createOptionForm([
                                 \Filament\Forms\Components\Select::make('attribute_id')
                                     ->relationship('attribute', 'name')
+                                    ->preload()
+                                    ->searchable()
                                     ->required(),
                                 TextInput::make('value')
                                     ->required(),

@@ -13,7 +13,7 @@ class BrandForm
     {
         return $schema
             ->components([
-                \Filament\Forms\Components\Section::make('Informations de la Marque')
+                \Filament\Schemas\Components\Section::make('Informations de la Marque')
                     ->schema([
                         TextInput::make('name')
                             ->required()

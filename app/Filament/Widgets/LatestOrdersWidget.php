@@ -37,7 +37,8 @@ class LatestOrdersWidget extends BaseWidget
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
                         'en_attente' => 'warning',
-                        'traitee' => 'info',
+                        'confirmee' => 'info',
+                        'en_preparation' => 'primary',
                         'expediee' => 'primary',
                         'livree' => 'success',
                         'annulee' => 'danger',
@@ -47,9 +48,10 @@ class LatestOrdersWidget extends BaseWidget
                     ->label('Paiement')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
-                        'paye' => 'success',
+                        'payee' => 'success',
                         default => 'danger',
                     }),
-            ]);
+            ])
+            ->paginated(false);
     }
 }

@@ -15,7 +15,7 @@ class ShopPage extends Component
     public $selectedCategories = [];
     public $selectedBrands = [];
     public $minPrice = 0;
-    public $maxPrice = 5000;
+    public $maxPrice = 10000000;
     public $search = '';
     public $sortBy = 'latest';
 
@@ -54,7 +54,9 @@ class ShopPage extends Component
             $query->where('name', 'like', '%' . $this->search . '%');
         }
 
-        $query->whereBetween('base_price', [$this->minPrice, $this->maxPrice]);
+        if ($this->minPrice > 0 || $this->maxPrice < 10000000) {
+            $query->whereBetween('base_price', [$this->minPrice, $this->maxPrice]);
+        }
 
         switch ($this->sortBy) {
             case 'price_asc':

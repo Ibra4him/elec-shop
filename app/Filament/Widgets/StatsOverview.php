@@ -10,7 +10,7 @@ class StatsOverview extends StatsOverviewWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('Chiffre d\'Affaires', number_format(\App\Models\Order::where('payment_status', 'paye')->sum('total_amount'), 0, ',', ' ') . ' FCFA')
+            Stat::make('Chiffre d\'Affaires', number_format(\App\Models\Order::where('payment_status', 'payee')->sum('total_amount'), 0, ',', ' ') . ' FCFA')
                 ->description('Total des ventes encaissées (Payées)')
                 ->descriptionIcon('heroicon-m-banknotes')
                 ->color('success'),

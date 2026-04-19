@@ -8,9 +8,9 @@ use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\IconColumn;
-use Filament\Schemas\Components\Select;
-use Filament\Schemas\Components\TextInput;
-use Filament\Schemas\Components\DateTimePicker;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Filters\SelectFilter;
 
@@ -33,7 +33,9 @@ class StockMovementResource extends Resource
         return $schema
             ->components([
                 Select::make('variant_id')
+                    ->label('Produit / Variante')
                     ->relationship('variant', 'sku')
+                    ->getOptionLabelFromRecordUsing(fn (\App\Models\ProductVariant $record) => "{$record->product->name} (SKU: {$record->sku})")
                     ->searchable()
                     ->required()
                     ->preload(),
@@ -56,6 +58,7 @@ class StockMovementResource extends Resource
                     ->placeholder('Ex: Facture #123'),
                 Select::make('user_id')
                     ->relationship('user', 'name')
+                    ->preload()
                     ->default(auth()->id())
                     ->disabled()
                     ->dehydrated(),

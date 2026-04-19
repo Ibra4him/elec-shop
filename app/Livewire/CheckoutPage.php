@@ -24,8 +24,21 @@ class CheckoutPage extends Component
         'name' => 'required|min:3',
         'email' => 'required|email',
         'phone' => 'required|min:8',
-        'delivery_address' => 'required|min:10',
+        'delivery_address' => 'required|min:5',
         'payment_method' => 'required|in:cash_on_delivery,bank_transfer',
+    ];
+
+    protected $messages = [
+        'name.required' => 'Votre nom complet est requis.',
+        'name.min' => 'Votre nom doit faire au moins 3 caractères.',
+        'email.required' => 'Votre adresse email est requise.',
+        'email.email' => 'Adresse email invalide.',
+        'phone.required' => 'Votre numéro de téléphone est requis.',
+        'phone.min' => 'Le numéro de téléphone est trop court.',
+        'delivery_address.required' => 'L\'adresse de livraison est requise.',
+        'delivery_address.min' => 'L\'adresse détaillée doit faire au moins 5 caractères.',
+        'payment_method.required' => 'Veuillez sélectionner une méthode de paiement.',
+        'payment_method.in' => 'Méthode de paiement non valide.',
     ];
 
     public function mount()

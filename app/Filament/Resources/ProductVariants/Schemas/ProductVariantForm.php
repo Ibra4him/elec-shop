@@ -15,6 +15,8 @@ class ProductVariantForm
             ->components([
                 Select::make('product_id')
                     ->relationship('product', 'name')
+                    ->preload()
+                    ->searchable()
                     ->required(),
                 TextInput::make('sku')
                     ->label('SKU')

@@ -11,7 +11,7 @@ class OrderInfolist
     {
         return $schema
             ->components([
-                \Filament\Infolists\Components\Section::make('Détails de la Commande')
+                \Filament\Schemas\Components\Section::make('Détails de la Commande')
                     ->schema([
                         TextEntry::make('order_number')
                             ->label('N° Commande')
@@ -22,7 +22,8 @@ class OrderInfolist
                             ->badge()
                             ->color(fn (string $state): string => match ($state) {
                                 'en_attente' => 'gray',
-                                'traitee' => 'primary',
+                                'confirmee' => 'primary',
+                                'en_preparation' => 'warning',
                                 'expediee' => 'info',
                                 'livree' => 'success',
                                 'annulee' => 'danger',
@@ -35,7 +36,7 @@ class OrderInfolist
                             ->dateTime(),
                     ])->columns(4),
 
-                \Filament\Infolists\Components\Section::make('Articles')
+                \Filament\Schemas\Components\Section::make('Articles')
                     ->schema([
                         \Filament\Infolists\Components\RepeatableEntry::make('items')
                             ->label('')
@@ -57,9 +58,9 @@ class OrderInfolist
                             ])->columns(5),
                     ]),
 
-                \Filament\Infolists\Components\Grid::make(2)
+                \Filament\Schemas\Components\Grid::make(2)
                     ->schema([
-                        \Filament\Infolists\Components\Section::make('Livraison & Paiement')
+                        \Filament\Schemas\Components\Section::make('Livraison & Paiement')
                             ->schema([
                                 TextEntry::make('delivery_address')
                                     ->label('Adresse de livraison'),
@@ -70,7 +71,7 @@ class OrderInfolist
                                     ->badge(),
                             ])->columnSpan(1),
                         
-                        \Filament\Infolists\Components\Section::make('Récapitulatif')
+                        \Filament\Schemas\Components\Section::make('Récapitulatif')
                             ->schema([
                                 TextEntry::make('subtotal')
                                     ->label('Sous-total')

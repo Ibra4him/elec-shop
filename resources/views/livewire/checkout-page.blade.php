@@ -135,7 +135,7 @@
                             </div>
                             <div class="flex justify-between text-slate-500">
                                 <span>Frais de livraison</span>
-                                <span class="text-green-600 font-medium">Gratuit</span>
+                                <span class="text-green-600 font-medium">A revoir</span>
                             </div>
                             <div class="flex justify-between pt-4 border-t border-slate-100 mt-4">
                                 <span class="text-lg font-bold text-slate-900">Total à payer</span>

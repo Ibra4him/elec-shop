@@ -32,7 +32,8 @@ class OrdersTable
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
                         'en_attente' => 'gray',
-                        'traitee' => 'primary',
+                        'confirmee' => 'primary',
+                        'en_preparation' => 'warning',
                         'expediee' => 'info',
                         'livree' => 'success',
                         'annulee' => 'danger',
@@ -50,7 +51,8 @@ class OrdersTable
                 \Filament\Tables\Filters\SelectFilter::make('status')
                     ->options([
                         'en_attente' => 'En attente',
-                        'traitee' => 'Traitée',
+                        'confirmee' => 'Confirmée',
+                        'en_preparation' => 'En préparation',
                         'expediee' => 'Expédiée',
                         'livree' => 'Livrée',
                         'annulee' => 'Annulée',

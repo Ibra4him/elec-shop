@@ -22,8 +22,9 @@ class OrderStatusChart extends ChartWidget
                     'data' => $data->values()->toArray(),
                     'backgroundColor' => [
                         '#f59e0b', // warning
-                        '#3b82f6', // info
-                        '#6366f1', // primary
+                        '#0ea5e9', // info (confirmee)
+                        '#6366f1', // primary (en_preparation)
+                        '#3b82f6', // blue (expediee)
                         '#22c55e', // success
                         '#ef4444', // danger
                     ],
@@ -31,7 +32,8 @@ class OrderStatusChart extends ChartWidget
             ],
             'labels' => $data->keys()->map(fn($status) => match($status) {
                 'en_attente' => 'En Attente',
-                'traitee' => 'Traitée',
+                'confirmee' => 'Confirmée',
+                'en_preparation' => 'En préparation',
                 'expediee' => 'Expédiée',
                 'livree' => 'Livrée',
                 'annulee' => 'Annulée',

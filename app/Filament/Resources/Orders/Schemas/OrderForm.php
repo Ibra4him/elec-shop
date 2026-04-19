@@ -15,6 +15,8 @@ class OrderForm
             ->components([
                 Select::make('user_id')
                     ->relationship('user', 'name')
+                    ->preload()
+                    ->searchable()
                     ->required(),
                 TextInput::make('order_number')
                     ->required(),

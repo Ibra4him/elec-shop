@@ -37,6 +37,13 @@ class Order extends Model
         static::creating(function ($order) {
             $order->order_number = 'ORD-' . strtoupper(Str::random(10));
         });
+
+        static::updating(function ($order) {
+            // Automatically confirm the order if it's paid and was still pending
+            if ($order->isDirty('payment_status') && $order->payment_status === 'payee' && $order->status === 'en_attente') {
+                $order->status = 'confirmee';
+            }
+        });
     }
 
     public function user(): BelongsTo

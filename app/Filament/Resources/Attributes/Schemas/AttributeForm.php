@@ -13,7 +13,7 @@ class AttributeForm
     {
         return $schema
             ->components([
-                \Filament\Forms\Components\Section::make('Détails de l\'attribut')
+                \Filament\Schemas\Components\Section::make('Détails de l\'attribut')
                     ->schema([
                         TextInput::make('name')
                             ->required()
@@ -44,7 +44,7 @@ class AttributeForm
                             ->default(0),
                     ])->columns(2),
 
-                \Filament\Forms\Components\Section::make('Valeurs possibles')
+                \Filament\Schemas\Components\Section::make('Valeurs possibles')
                     ->schema([
                         \Filament\Forms\Components\Repeater::make('values')
                             ->relationship('values')

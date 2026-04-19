@@ -24,10 +24,12 @@ class ProductForm
                                             ->label('Catégorie')
                                             ->relationship('category', 'name')
                                             ->required()
+                                            ->preload()
                                             ->searchable(),
                                         Select::make('brand_id')
                                             ->label('Marque')
                                             ->relationship('brand', 'name')
+                                            ->preload()
                                             ->searchable(),
                                         Select::make('status')
                                             ->label('Statut')
@@ -93,7 +95,8 @@ class ProductForm
 
                         \Filament\Schemas\Components\Tabs\Tab::make('Médias')
                             ->schema([
-                                \Filament\Forms\Components\FileUpload::make('images')
+                                \Filament\Forms\Components\SpatieMediaLibraryFileUpload::make('product_images')
+                                    ->collection('product_images')
                                     ->label('Images du produit')
                                     ->multiple()
                                     ->image()

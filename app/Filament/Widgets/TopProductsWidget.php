@@ -18,11 +18,12 @@ class TopProductsWidget extends BaseWidget
         return $table
             ->query(
                 OrderItem::query()
-                    ->selectRaw('product_name, SUM(quantity) as total_qty, SUM(total_price) as revenue')
+                    ->selectRaw('MAX(id) as id, product_name, SUM(quantity) as total_qty, SUM(total_price) as revenue')
                     ->groupBy('product_name')
                     ->orderByDesc('total_qty')
                     ->limit(5)
             )
+            ->paginated(false)
             ->columns([
                 TextColumn::make('product_name')
                     ->label('Produit'),

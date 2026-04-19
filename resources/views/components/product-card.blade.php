@@ -24,7 +24,7 @@
         <div class="flex justify-between items-start mb-1">
             <p class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">{{ $product->brand->name ?? 'Générique' }} / {{ $product->category->name }}</p>
         </div>
-        <h3 class="text-sm font-semibold text-slate-800 line-clamp-1 mb-2">
+        <h3 class="text-lg font-bold text-slate-900 line-clamp-1 mb-2">
             <a href="/products/{{ $product->slug }}">
                 <span class="absolute inset-0"></span>
                 {{ $product->name }}
