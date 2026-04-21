@@ -64,7 +64,7 @@ class OrderService
 
     public function getWhatsAppLink(Order $order)
     {
-        $phoneNumber = "22998935912";
+        $phoneNumber = "22997587762";
         $message = "🔹 *NOUVELLE COMMANDE ElecShop*\n\n";
         $message .= "Bonjour, je souhaite confirmer ma commande *#{$order->order_number}*.\n\n";
         $message .= "📦 *Détails des produits :*\n";

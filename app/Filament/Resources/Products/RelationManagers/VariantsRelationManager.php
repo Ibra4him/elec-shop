@@ -120,18 +120,24 @@ class VariantsRelationManager extends RelationManager
                 //
             ])
             ->headerActions([
-                CreateAction::make(),
-                AssociateAction::make(),
+                CreateAction::make()
+                    ->hidden(fn (RelationManager $livewire) => !$livewire->getOwnerRecord()->has_variants),
+                AssociateAction::make()
+                    ->hidden(fn (RelationManager $livewire) => !$livewire->getOwnerRecord()->has_variants),
             ])
             ->recordActions([
                 EditAction::make(),
-                DissociateAction::make(),
-                DeleteAction::make(),
+                DissociateAction::make()
+                    ->hidden(fn (RelationManager $livewire) => !$livewire->getOwnerRecord()->has_variants),
+                DeleteAction::make()
+                    ->hidden(fn (RelationManager $livewire) => !$livewire->getOwnerRecord()->has_variants),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DissociateBulkAction::make(),
-                    DeleteBulkAction::make(),
+                    DissociateBulkAction::make()
+                        ->hidden(fn (RelationManager $livewire) => !$livewire->getOwnerRecord()->has_variants),
+                    DeleteBulkAction::make()
+                        ->hidden(fn (RelationManager $livewire) => !$livewire->getOwnerRecord()->has_variants),
                 ]),
             ]);
     }

@@ -15,21 +15,14 @@
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center space-x-8">
-                <a href="/" class="text-sm font-semibold text-slate-700 hover:text-blue-600 transition-colors">Accueil</a>
-                <a href="/shop" class="text-sm font-semibold text-slate-700 hover:text-blue-600 transition-colors">Boutique</a>
-                <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                    <button class="flex items-center text-sm font-semibold text-slate-700 hover:text-blue-600 transition-colors">
-                        Catégories
-                        <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    <!-- Dropdown could be added here -->
-                </div>
+                <a href="/" class="text-sm font-semibold text-slate-700 hover:text-blue-600 transition-colors {{ request()->is('/') ? 'text-blue-600' : '' }}">Accueil</a>
+                <a href="/shop" class="text-sm font-semibold text-slate-700 hover:text-blue-600 transition-colors {{ request()->is('shop*') ? 'text-blue-600' : '' }}">Boutique</a>
+                <a href="/about" class="text-sm font-semibold text-slate-700 hover:text-blue-600 transition-colors {{ request()->is('about') ? 'text-blue-600' : '' }}">À propos</a>
+                <a href="/contact" class="text-sm font-semibold text-slate-700 hover:text-blue-600 transition-colors {{ request()->is('contact') ? 'text-blue-600' : '' }}">Contact</a>
             </div>
 
             <!-- Right Icons -->
-            <div class="flex items-center space-x-5">
+            <div class="flex items-center space-x-3">
                 <!-- Search -->
                 <button class="p-2 text-slate-500 hover:bg-slate-100 rounded-full transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -40,6 +33,44 @@
                 <!-- Cart -->
                 @livewire('cart-count')
 
+                <!-- Favorites -->
+                @livewire('favorites-count')
+
+                <!-- Auth -->
+                @auth
+                <div class="relative" x-data="{ userMenu: false }">
+                    <button @click="userMenu = !userMenu" @click.away="userMenu = false"
+                        class="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-slate-100 transition-colors group">
+                        <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                            {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                        </div>
+                        <span class="text-sm font-semibold text-slate-700 max-w-[100px] truncate">{{ Auth::user()->name }}</span>
+                        <svg class="w-4 h-4 text-slate-400 transition-transform" :class="{ 'rotate-180': userMenu }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div x-show="userMenu" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 translate-y-1" x-transition:enter-end="opacity-100 translate-y-0"
+                        class="absolute right-0 mt-2 w-52 bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden z-50">
+                        <div class="px-4 py-3 border-b border-slate-100">
+                            <p class="text-sm font-bold text-slate-900 truncate">{{ Auth::user()->name }}</p>
+                            <p class="text-xs text-slate-400 truncate">{{ Auth::user()->email }}</p>
+                        </div>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="w-full flex items-center gap-3 px-4 py-3 text-sm text-red-600 hover:bg-red-50 transition-colors font-medium">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                                Déconnexion
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                @else
+                <a href="{{ route('login') }}" class="inline-flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl transition-all hover:shadow-lg hover:shadow-blue-200 hover:-translate-y-0.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/></svg>
+                    Connexion
+                </a>
+                @endauth
+
                 <!-- Mobile menu button -->
                 <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 text-slate-500 hover:bg-slate-100 rounded-full transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -48,6 +79,7 @@
                     </svg>
                 </button>
             </div>
+
         </div>
     </div>
 
@@ -56,6 +88,24 @@
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <a href="/" class="block px-3 py-4 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-lg">Accueil</a>
             <a href="/shop" class="block px-3 py-4 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-lg">Boutique</a>
+            <a href="{{ route('favorites') }}" class="block px-3 py-4 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-lg">Mes Favoris</a>
+            <a href="/about" class="block px-3 py-4 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-lg">À propos</a>
+            <a href="/contact" class="block px-3 py-4 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-lg">Contact</a>
+            <div class="border-t border-slate-100 pt-2 mt-2">
+                @auth
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="w-full flex items-center gap-3 px-3 py-4 text-base font-medium text-red-600 hover:bg-red-50 rounded-lg text-left">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                        Déconnexion ({{ Auth::user()->name }})
+                    </button>
+                </form>
+                @else
+                <a href="{{ route('login') }}" class="block px-3 py-4 text-base font-medium text-blue-600 hover:bg-blue-50 rounded-lg">
+                    Connexion / Inscription
+                </a>
+                @endauth
+            </div>
         </div>
     </div>
 </nav>

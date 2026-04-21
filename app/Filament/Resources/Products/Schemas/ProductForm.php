@@ -65,9 +65,36 @@ class ProductForm
                                             ->required()
                                             ->numeric()
                                             ->suffix('FCFA'),
+                                        Toggle::make('has_variants')
+                                            ->label('Ce produit possède des variantes (ex: Type, Couleur, ...) ?')
+                                            ->helperText('Si désactivé, le stock sera géré directement ici.')
+                                            ->default(false)
+                                            ->live(),
                                         Toggle::make('is_featured')
                                             ->label('Mettre en avant')
                                             ->default(false),
+                                    ]),
+
+                                \Filament\Schemas\Components\Section::make('Stock & Inventaire')
+                                    ->description('Gérez le SKU et la quantité en stock pour ce produit (produit simple sans variantes).')
+                                    ->hidden(fn ($get) => $get('has_variants'))
+                                    ->schema([
+                                        \Filament\Schemas\Components\Grid::make(3)
+                                            ->schema([
+                                                TextInput::make('sku')
+                                                    ->label('SKU')
+                                                    ->unique(ignoreRecord: true),
+                                                TextInput::make('stock_qty')
+                                                    ->label('Quantité en stock')
+                                                    ->numeric()
+                                                    ->default(0)
+                                                    ->required(),
+                                                TextInput::make('min_stock')
+                                                    ->label('Seuil d\'alerte stock')
+                                                    ->numeric()
+                                                    ->default(5)
+                                                    ->required(),
+                                            ]),
                                     ]),
                             ]),
 

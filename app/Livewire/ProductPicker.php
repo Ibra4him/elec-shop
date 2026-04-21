@@ -17,8 +17,8 @@ class ProductPicker extends Component
     public function mount(Product $product)
     {
         $this->product = $product;
-        // Select first active variant by default
-        $this->currentVariant = $product->variants->where('is_active', true)->first();
+        // Sélectionne la variante principale par défaut (ou la seule si produit simple)
+        $this->currentVariant = $product->getMainVariant();
         if ($this->currentVariant) {
             $this->selectedVariantId = $this->currentVariant->id;
         }

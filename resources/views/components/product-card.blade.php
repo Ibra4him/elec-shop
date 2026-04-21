@@ -12,11 +12,8 @@
             <span class="absolute top-2 left-2 bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider">Eco</span>
         @endif
         
-        <button class="absolute bottom-2 right-2 p-2 bg-white/90 backdrop-blur rounded-lg shadow-sm opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 hover:bg-blue-600 hover:text-white">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-            </svg>
-        </button>
+        <!-- Favorite Toggle -->
+        <livewire:favorite-button :product-id="$product->id" :wire:key="'fav-'.$product->id" />
     </div>
 
     <!-- Content -->

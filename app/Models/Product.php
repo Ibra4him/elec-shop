@@ -36,10 +36,15 @@ class Product extends Model implements HasMedia
         'is_featured',
         'meta_title',
         'meta_description',
+        'has_variants',
+        'sku',
+        'stock_qty',
+        'min_stock',
     ];
 
     protected $casts = [
         'is_featured' => 'boolean',
+        'has_variants' => 'boolean',
         'base_price' => 'decimal:2',
     ];
 
@@ -88,5 +93,46 @@ class Product extends Model implements HasMedia
     public function scopeFeatured($query)
     {
         return $query->where('is_featured', true);
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+    public function favoritedBy()
+    {
+        return $this->belongsToMany(User::class, 'favorites');
+    }
+
+    protected static function booted()
+    {
+        static::saved(function ($product) {
+            if (!$product->has_variants) {
+                // Synchroniser la variante par défaut pour les produits simples
+                $product->variants()->updateOrCreate(
+                    [], // On prend la première variante ou on en crée une
+                    [
+                        'sku' => $product->sku ?? 'SKU-' . $product->id,
+                        'price' => $product->base_price,
+                        'stock_qty' => $product->stock_qty,
+                        'min_stock' => $product->min_stock,
+                        'is_active' => true,
+                    ]
+                );
+            }
+        });
+    }
+
+    /**
+     * Récupère la variante principale (la seule si simple, ou la première active)
+     */
+    public function getMainVariant()
+    {
+        if (!$this->has_variants) {
+            return $this->variants->first();
+        }
+
+        return $this->variants->where('is_active', true)->first();
     }
 }
