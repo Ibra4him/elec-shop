@@ -16,12 +16,12 @@ class HomeController extends Controller
             ->take(8)
             ->get();
 
-        $rootCategories = Category::whereNull('parent_id')
-            ->where('is_active', true)
+        $rootCategories = Category::where('is_active', true)
             ->withCount('products')
-            ->take(4)
             ->get();
 
-        return view('welcome', compact('featuredProducts', 'rootCategories'));
+        $brands = \App\Models\Brand::where('is_active', true)->get();
+
+        return view('welcome', compact('featuredProducts', 'rootCategories', 'brands'));
     }
 }

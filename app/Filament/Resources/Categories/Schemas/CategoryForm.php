@@ -14,9 +14,9 @@ class CategoryForm
     {
         return $schema
             ->components([
-                \Filament\Forms\Components\Tabs::make('Tabs')
+                \Filament\Schemas\Components\Tabs::make('Tabs')
                     ->tabs([
-                        \Filament\Forms\Components\Tabs\Tab::make('Général')
+                        \Filament\Schemas\Components\Tabs\Tab::make('Général')
                             ->schema([
                                 Select::make('parent_id')
                                     ->relationship('parent', 'name', fn ($query) => $query->whereNull('parent_id'))
@@ -33,9 +33,10 @@ class CategoryForm
                                     ->dehydrated()
                                     ->required()
                                     ->unique(ignoreRecord: true),
-                                TextInput::make('icon')
-                                    ->label('Icône (Heroicon/Lucide)')
-                                    ->placeholder('heroicon-o-variable'),
+                                \Filament\Forms\Components\FileUpload::make('image')
+                                    ->label('Image de la catégorie')
+                                    ->image()
+                                    ->directory('categories'),
                                 Textarea::make('description')
                                     ->columnSpanFull(),
                                 TextInput::make('position')
@@ -46,7 +47,7 @@ class CategoryForm
                                     ->default(true),
                             ])->columns(2),
                         
-                        \Filament\Forms\Components\Tabs\Tab::make('SEO')
+                        \Filament\Schemas\Components\Tabs\Tab::make('SEO')
                             ->schema([
                                 TextInput::make('meta_title')
                                     ->label('Meta Title')
@@ -54,8 +55,8 @@ class CategoryForm
                                 Textarea::make('meta_description')
                                     ->label('Meta Description')
                                     ->maxLength(160),
-                            ]),
-                    ])->columnSpanFull(),
+                                ]),
+                        ])->columnSpanFull(),
             ]);
     }
 }
