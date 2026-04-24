@@ -24,7 +24,7 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased">
+<body class="bg-slate-50 text-slate-900 antialiased overflow-x-hidden">
     @livewire('cart-sidebar')
     
     <x-navbar />

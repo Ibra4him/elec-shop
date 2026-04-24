@@ -40,7 +40,7 @@
                 <div class="mt-10 lg:mt-0">
                     <div class="mb-4">
                         <p class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-1">{{ $product->brand->name ?? 'Générique' }}</p>
-                        <h1 class="text-4xl font-extrabold text-slate-900 font-display leading-tight">{{ $product->name }}</h1>
+                        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-display leading-tight">{{ $product->name }}</h1>
                     </div>
 
                     <div class="flex items-center gap-4 mb-8">
@@ -77,10 +77,10 @@
     </div>
 
     <!-- Related Products -->
-    <div class="bg-slate-50 py-24">
+    <div class="bg-slate-50 py-16 lg:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-2xl font-extrabold text-slate-900 font-display mb-12">Produits Similaires</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
                 @foreach($relatedProducts as $related)
                     <x-product-card :product="$related" />
                 @endforeach

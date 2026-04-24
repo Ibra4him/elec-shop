@@ -62,18 +62,32 @@
     </div>
 
     <!-- Actions -->
-    <div class="flex gap-4">
+    <div class="flex flex-col sm:flex-row gap-3">
         <button 
             wire:click="addToCart"
             {{ ($currentVariant && $currentVariant->stock_qty > 0) ? '' : 'disabled' }}
-            class="flex-1 py-5 bg-blue-600 text-white font-bold rounded-2xl shadow-xl shadow-blue-200 hover:bg-blue-700 transition-all hover:-translate-y-1 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+            class="flex-1 py-4 bg-slate-900 text-white font-bold rounded-2xl shadow-lg hover:bg-slate-800 transition-all hover:-translate-y-0.5 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
         >
             <span class="flex items-center justify-center gap-2">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
-                Ajouter au Panier
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+                Ajouter
+            </span>
+        </button>
+
+        <button 
+            wire:click="buyNow"
+            {{ ($currentVariant && $currentVariant->stock_qty > 0) ? '' : 'disabled' }}
+            class="flex-1 py-4 bg-slate-100 text-slate-900 font-bold rounded-2xl border border-slate-200 hover:bg-slate-200 transition-all hover:-translate-y-0.5 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+            <span class="flex items-center justify-center gap-2">
+                Acheter
             </span>
         </button>
         
-        <livewire:favorite-button :product-id="$product->id" variant="large" :wire:key="'fav-page-'.$product->id" />
+        <div class="flex sm:hidden w-full h-px bg-slate-100 my-1"></div>
+
+        <div class="flex justify-center">
+            <livewire:favorite-button :product-id="$product->id" variant="large" :wire:key="'fav-page-'.$product->id" />
+        </div>
     </div>
 </div>

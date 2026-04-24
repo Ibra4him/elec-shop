@@ -41,6 +41,17 @@ class ProductPicker extends Component
         session()->flash('success', 'Produit ajouté au panier !');
     }
 
+    public function buyNow(CartService $cartService)
+    {
+        if (!$this->currentVariant) return;
+
+        $cartService->addItem($this->currentVariant->id, $this->quantity);
+
+        $this->dispatch('cart-updated');
+
+        return redirect()->to('/checkout');
+    }
+
     public function render()
     {
         return view('livewire.product-picker');

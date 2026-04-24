@@ -74,8 +74,8 @@
                          x-transition:enter-start="opacity-0 translate-y-8"
                          x-transition:enter-end="opacity-100 translate-y-0">
                         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold leading-5 bg-white/20 text-white uppercase tracking-widest mb-6 backdrop-blur-sm border border-white/30" x-text="slide.badge"></span>
-                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white font-display leading-[1.1] mb-6 drop-shadow-lg" x-html="slide.title"></h1>
-                        <p class="text-lg sm:text-xl text-slate-200 mb-10 leading-relaxed drop-shadow-md" x-text="slide.text"></p>
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white font-display leading-[1.1] mb-6 drop-shadow-lg" x-html="slide.title"></h1>
+                        <p class="text-base sm:text-lg lg:text-xl text-slate-200 mb-10 leading-relaxed drop-shadow-md" x-text="slide.text"></p>
                         <div class="flex gap-4">
                             <a href="/shop" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all hover:-translate-y-1 shadow-xl shadow-blue-500/30">
                                 Découvrir la Boutique
@@ -120,8 +120,8 @@
         <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(to top, rgba(37, 99, 235, 0.18) 0%, rgba(59, 130, 246, 0.10) 35%, rgba(255,255,255,0.95) 60%, #fff 80%);"></div>
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120%] h-[55%] pointer-events-none" style="background: radial-gradient(ellipse at 50% 100%, rgba(37,99,235,0.22) 0%, rgba(59,130,246,0.08) 50%, transparent 80%); filter: blur(60px);"></div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-28">
+            <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
 
                 <!-- Image Left -->
                 <div class="w-full lg:w-[45%] flex-shrink-0 transition-all duration-1000 ease-out"
@@ -214,7 +214,7 @@
     </div>
 
     <!-- Categories Carousel -->
-    <div class="bg-slate-50 py-24" x-data="{
+    <div class="bg-slate-50 py-16 md:py-24" x-data="{
         scrollNext() {
             $refs.slider.scrollBy({ left: 300, behavior: 'smooth' });
         },
@@ -225,7 +225,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-end mb-12">
                 <div>
-                    <h2 class="text-3xl font-extrabold text-slate-900 font-display">Nos catégories</h2>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 font-display">Nos catégories</h2>
                 </div>
                 <div class="flex items-center gap-2">
                     <button @click="scrollPrev" class="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:border-slate-300 transition-all bg-white shadow-sm">
@@ -277,7 +277,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-200 pt-16">
             <div class="flex justify-between items-end mb-8">
                 <div>
-                    <h2 class="text-3xl font-extrabold text-slate-900 font-display">Nos Marques</h2>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 font-display">Nos Marques</h2>
                 </div>
                 <div class="flex items-center gap-2">
                     <button @click="scrollPrev" class="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:border-slate-300 transition-all bg-white shadow-sm">
@@ -307,7 +307,7 @@
     @endif
 
     <!-- Pourquoi choisir ElecShop -->
-    <div class="bg-white py-24 overflow-hidden relative" x-data="{ shown: false }" x-init="
+    <div class="bg-white py-16 md:py-24 overflow-hidden relative" x-data="{ shown: false }" x-init="
         const observer = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting) {
                 shown = true;
@@ -386,15 +386,15 @@
     </div>
 
     <!-- Featured Products -->
-    <div id="featured" class="bg-white py-24">
+    <div id="featured" class="bg-white py-16 md:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16">
                 <span class="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4 block">Sélection du mois</span>
-                <h2 class="text-4xl font-extrabold text-slate-900 font-display mb-4">Produits Mis en Avant</h2>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 font-display mb-4">Produits Mis en Avant</h2>
                 <div class="w-16 h-1 bg-blue-600 mx-auto rounded-full"></div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-3 gap-y-6 sm:gap-x-6 sm:gap-y-10">
                 @foreach($featuredProducts as $product)
                     <x-product-card :product="$product" />
                 @endforeach

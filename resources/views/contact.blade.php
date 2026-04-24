@@ -5,7 +5,7 @@
 @section('content')
 
 {{-- Hero --}}
-<section class="relative bg-slate-900 py-28 overflow-hidden">
+<section class="relative bg-slate-900 py-20 lg:py-28 overflow-hidden">
     <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#3b82f6 1px, transparent 1px), linear-gradient(90deg, #3b82f6 1px, transparent 1px); background-size: 60px 60px;"></div>
     <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
     <div class="relative z-10 max-w-4xl mx-auto text-center px-4">
@@ -13,7 +13,7 @@
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             Marimilitaire, Cotonou — Bénin
         </span>
-        <h1 class="text-5xl lg:text-6xl font-extrabold text-white font-display mb-6">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white font-display mb-6">
             Parlons de votre <span class="text-blue-400">projet</span>
         </h1>
         <p class="text-slate-400 text-lg max-w-2xl mx-auto">
@@ -69,7 +69,7 @@
 </section>
 
 {{-- Main Content: Form + Info --}}
-<section class="bg-white py-24">
+<section class="bg-white py-16 lg:py-24">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-5 gap-12">
 
@@ -77,7 +77,7 @@
             <div class="lg:col-span-3">
                 <div class="bg-slate-50 rounded-3xl p-8 lg:p-10 border border-slate-100">
                     <div class="mb-8">
-                        <h2 class="text-3xl font-extrabold text-slate-900 font-display mb-2">Envoyez-nous un message</h2>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display mb-2">Envoyez-nous un message</h2>
                         <p class="text-slate-500">Remplissez ce formulaire et nous vous répondrons sous 2 heures ouvrées.</p>
                     </div>
 
@@ -208,10 +208,10 @@
 </section>
 
 {{-- Map Section --}}
-<section class="bg-slate-50 py-16">
+<section class="bg-slate-50 py-12 lg:py-16">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-10">
-            <h2 class="text-3xl font-extrabold text-slate-900 font-display mb-2">Trouvez-Nous</h2>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display mb-2">Trouvez-Nous</h2>
             <p class="text-slate-500">Nous sommes facilement accessibles au quartier Marimilitaire, Cotonou.</p>
         </div>
         <div class="rounded-3xl overflow-hidden shadow-2xl border border-slate-200" style="height: 420px;">
@@ -230,11 +230,11 @@
 </section>
 
 {{-- FAQ --}}
-<section class="bg-white py-24">
+<section class="bg-white py-16 lg:py-24">
     <div class="max-w-3xl mx-auto px-4">
         <div class="text-center mb-16">
             <span class="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4 block">Réponses rapides</span>
-            <h2 class="text-4xl font-extrabold text-slate-900 font-display">Questions Fréquentes</h2>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-display">Questions Fréquentes</h2>
         </div>
         <div class="space-y-4" x-data="{ open: null }">
             @foreach([

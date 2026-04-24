@@ -15,7 +15,7 @@ class ShopPage extends Component
     public $selectedCategories = [];
     public $selectedBrands = [];
     public $minPrice = 0;
-    public $maxPrice = 10000000;
+    public $maxPrice = 500000;
     public $search = '';
     public $sortBy = 'latest';
 
@@ -54,7 +54,7 @@ class ShopPage extends Component
             $query->where('name', 'like', '%' . $this->search . '%');
         }
 
-        if ($this->minPrice > 0 || $this->maxPrice < 10000000) {
+        if ($this->minPrice > 0 || $this->maxPrice < 500000) {
             $query->whereBetween('base_price', [$this->minPrice, $this->maxPrice]);
         }
 
@@ -71,7 +71,7 @@ class ShopPage extends Component
         }
 
         return view('livewire.shop-page', [
-            'products' => $query->paginate(12),
+            'products' => $query->paginate(20),
             'categories' => Category::where('is_active', true)->withCount('products')->get(),
             'brands' => Brand::where('is_active', true)->withCount('products')->get(),
         ]);

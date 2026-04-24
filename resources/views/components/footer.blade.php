@@ -1,6 +1,6 @@
 <footer class="bg-white border-t border-slate-200 pt-16 pb-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-12 mb-12 md:mb-16">
             <!-- Brand -->
             <div class="col-span-1 md:col-span-1">
                 <div class="flex items-center gap-2 mb-6">
@@ -74,7 +74,7 @@
         </div>
 
         <!-- Bottom bar -->
-        <div class="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-6 md:gap-4">
             <p class="text-sm text-slate-400">&copy; {{ date('Y') }} ElecShop. Tous droits réservés.</p>
             <div class="flex gap-6">
                 <!-- Social icons could go here -->

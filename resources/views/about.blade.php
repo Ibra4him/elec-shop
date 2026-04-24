@@ -14,13 +14,13 @@
     <div class="absolute top-1/4 -right-32 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
     <div class="absolute bottom-0 left-1/4 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl"></div>
 
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 grid lg:grid-cols-2 gap-16 items-center">
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div>
             <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-bold uppercase tracking-widest mb-6">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                 Depuis Cotonou, pour tout le Bénin
             </span>
-            <h1 class="text-5xl lg:text-6xl font-extrabold text-white font-display leading-tight mb-6">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white font-display leading-tight mb-6">
                 Qui sommes-<span class="text-blue-400">nous</span> ?
             </h1>
             <p class="text-slate-300 text-lg leading-relaxed mb-8">
@@ -54,13 +54,13 @@
 </section>
 
 {{-- 3D Lamp Section --}}
-<section id="lamp-section" class="bg-white py-32 overflow-hidden">
+<section id="lamp-section" class="bg-white py-16 md:py-24 lg:py-32 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {{-- Text --}}
             <div class="order-2 lg:order-1" data-animate="fade-up">
                 <span class="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4 block">Notre Spécialité</span>
-                <h2 class="text-4xl font-extrabold text-slate-900 font-display mb-6 leading-tight">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-display mb-6 leading-tight">
                     L'éclairage, <br><span class="text-blue-600">une science et un art</span>
                 </h2>
                 <p class="text-slate-600 leading-relaxed mb-6 text-lg">
@@ -107,11 +107,11 @@
 </section>
 
 {{-- Products Categories --}}
-<section class="bg-slate-50 py-24" data-animate="fade-up">
+<section class="bg-slate-50 py-16 lg:py-24" data-animate="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
+        <div class="text-center mb-12 lg:mb-16">
             <span class="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4 block">Ce que nous vendons</span>
-            <h2 class="text-4xl font-extrabold text-slate-900 font-display mb-4">Notre Gamme de Produits</h2>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-display mb-4">Notre Gamme de Produits</h2>
             <p class="text-slate-500 max-w-2xl mx-auto">Une sélection complète de matériel électrique pour la maison, le bureau et les projets de construction.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -173,12 +173,12 @@
 </section>
 
 {{-- Our Story / Values --}}
-<section class="bg-white py-24">
+<section class="bg-white py-16 lg:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div data-animate="fade-right">
                 <span class="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4 block">Notre Histoire</span>
-                <h2 class="text-4xl font-extrabold text-slate-900 font-display mb-6">Né à Cotonou, <br>pensé pour vous</h2>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-display mb-6">Né à Cotonou, <br>pensé pour vous</h2>
                 <div class="space-y-5 text-slate-600 leading-relaxed">
                     <p>
                         ElecShop est né d'un constat simple : au Bénin, l'accès à du matériel électrique de qualité, garanti et certifié, reste un défi pour de nombreux ménages et professionnels. Installés au quartier Marimilitaire à Cotonou, nous avons décidé de changer la donne.
@@ -215,10 +215,10 @@
 </section>
 
 {{-- CTA --}}
-<section class="relative bg-slate-900 py-24 overflow-hidden">
+<section class="relative bg-slate-900 py-16 lg:py-24 overflow-hidden">
     <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#3b82f6 1px, transparent 1px), linear-gradient(90deg, #3b82f6 1px, transparent 1px); background-size: 60px 60px;"></div>
     <div class="relative z-10 max-w-3xl mx-auto text-center px-4">
-        <h2 class="text-4xl font-extrabold text-white font-display mb-6">Prêt à équiper votre espace ?</h2>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-display mb-6">Prêt à équiper votre espace ?</h2>
         <p class="text-slate-400 text-lg mb-10">Parcourez notre catalogue en ligne ou visitez-nous directement à Marimilitaire, Cotonou. Notre équipe est à votre écoute du lundi au samedi, de 8h à 18h.</p>
         <div class="flex flex-wrap justify-center gap-4">
             <a href="/shop" class="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all hover:-translate-y-1 shadow-2xl shadow-blue-900/50">
